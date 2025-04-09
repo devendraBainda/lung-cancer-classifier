@@ -102,7 +102,7 @@ python app.py
 2. Connect your GitHub repository
 3. Use the following settings:
    - **Environment**: Python
-   - **Build Command**: `./build.sh`
+   - **Build Command**: `pip install -r requirements.txt`
    - **Start Command**: `gunicorn app:app`
    - **Environment Variables**: Add any necessary environment variables
 
