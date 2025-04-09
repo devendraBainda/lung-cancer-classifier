@@ -5,6 +5,8 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
 from werkzeug.utils import secure_filename
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0 = all logs, 1 = filter INFO, 2 = filter WARNING, 3 = filter ERROR
 
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
