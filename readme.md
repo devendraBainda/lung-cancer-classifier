@@ -123,15 +123,8 @@ The training code is available in `Training_model.py` for reference. If you wish
 
 See `requirements.txt` for a full list of dependencies.
 
-## License
-
-[Include your license information here]
-
-## Contributing
-
-[Include contribution guidelines if applicable]
 
 ## Acknowledgements
 
 - The ResNet50 model architecture was developed by Microsoft Research
-- Dataset source: [Include dataset citation/source from Kaggle]
+- Dataset source: https://www.kaggle.com/datasets/andrewmvd/lung-and-colon-cancer-histopathological-images?resource=download
