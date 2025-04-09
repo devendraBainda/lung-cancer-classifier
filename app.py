@@ -14,7 +14,8 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from werkzeug.utils import secure_filename
 
-# Create uploads directory if it doesn't exist
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0 = all logs, 1 = filter INFO, 2 = filter WARNING, 3 = filter ERROR
+
 UPLOAD_FOLDER = 'static/uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
