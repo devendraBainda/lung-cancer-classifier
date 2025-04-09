@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: lung-cancer-classifier
+    env: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn app:app
+    envVars:
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: 2
+      - key: TF_ENABLE_ONEDNN_OPTS
+        value: 0
+      - key: PYTHON_VERSION
+        value: 3.10.0
