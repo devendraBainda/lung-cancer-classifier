@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Prediction Results</h1>
+            <p class="subtitle">AI analysis of your lung tissue images</p>
+        </header>
+
+        <div class="results-container">
+            {% if results %}
+                <div class="results-grid">
+                    {% for result in results %}
+                        <div class="result-card">
+                            <div class="result-image">
+                                <img src="{{ url_for('static', filename='uploads/' + result.filename) }}" alt="{{ result.filename }}">
+                            </div>
+                            <div class="result-details">
+                                <h3>{{ result.prediction }}</h3>
+                                <p class="confidence">Confidence: {{ result.confidence }}%</p>
+                                <p class="filename">{{ result.filename }}</p>
+                                
+                                {% if 'Benign' in result.prediction %}
+                                    <div class="prediction-tag benign">Benign</div>
+                                {% else %}
+                                    <div class="prediction-tag malignant">Malignant</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-results">
+                    <p>No results to display. Please upload images to get predictions.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="actions">
+            <a href="/" class="primary-button">Analyze More Images</a>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>Important:</strong> This tool is for educational purposes only. Always consult with healthcare professionals for medical diagnosis.</p>
+        </div>
+    </div>
+</body>
+</html>

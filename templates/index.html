@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lung Cancer Classification</h1>
+            <p class="subtitle">Upload lung tissue images for AI-powered cancer detection</p>
+        </header>
+
+        <div class="card">
+            <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-zone-prompt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Drag & drop images here or <span class="browse-text">browse files</span></p>
+                        <p class="small-text">Supported formats: JPG, JPEG, PNG</p>
+                    </div>
+                    <input type="file" id="file-input" name="images" multiple accept=".jpg,.jpeg,.png">
+                </div>
+
+                <div id="preview-container" class="preview-container hidden">
+                    <h3>Selected Images</h3>
+                    <div id="image-previews" class="image-previews"></div>
+                    <div class="preview-actions">
+                        <button type="button" id="clear-button" class="secondary-button">Clear All</button>
+                        <button type="submit" id="predict-button" class="primary-button">
+                            <span>Predict</span>
+                            <div class="spinner hidden"></div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="error-message" class="error-message hidden"></div>
+
+        <div class="info-section">
+            <h2>About This Classifier</h2>
+            <p>This tool uses deep learning to classify lung tissue images into three categories:</p>
+            <ul>
+                <li><strong>Lung Benign Tissue:</strong> Normal, non-cancerous lung tissue</li>
+                <li><strong>Lung Squamous Cell Carcinoma:</strong> A type of non-small cell lung cancer</li>
+                <li><strong>Lung Adenocarcinoma:</strong> Another type of non-small cell lung cancer</li>
+            </ul>
+            <p>For accurate results, please upload clear, high-quality images of lung tissue samples.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
